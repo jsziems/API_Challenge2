@@ -1,0 +1,29 @@
+body {
+    margin: 15px;
+}
+
+#apod-info {
+    width: 80%;
+}
+
+#img-title {
+
+}
+
+#image-and-expl {
+    padding-top: 20px;
+
+    display: flex;
+}
+
+
+.nasa-img {
+    float: left;
+    padding-right: 15px;
+    width: 50%;
+    height: 50%;
+}
+
+#explanation {
+    color: black;
+}
