@@ -1,5 +1,6 @@
 
 // ToDo: 
+//     Use createElement for the title-thru-expl.  See drawing.
 //     Background image/color?
 //     Font
 //     No image alert
@@ -12,13 +13,15 @@ const apiKey = "U5YCwar82d9GKNPxCGPTYasZE30KkEyD2glgTP35"
 let url
 
 // ToDo:  Should the display function be after getAndDisplayImage?  Should it be a 'const'?
-const display = (imageUrl, imageExplanation, imageTitle) => {
+const display = (imageUrl, imageExplanation, imageTitle, imageDate) => {
     console.log("in display")
     console.log(imageUrl)
     console.log(imageExplanation)
     console.log(imageTitle)
+    console.log(imageDate)
 
     document.getElementById('img-title').innerText = imageTitle
+    document.getElementById('img-date').innerText = imageDate
 
     let image = document.getElementById('image');
     image.src = imageUrl;
@@ -29,7 +32,6 @@ const display = (imageUrl, imageExplanation, imageTitle) => {
 function getAndDisplayImage() {
     console.log("in getAndDisplayImage")
     let userDate = document.getElementById("user-date").value;
-    document.getElementById("display-date").innerHTML = userDate;
 
     url = `${baseUrl}${apiKey}&date=${userDate}`
     console.log(url)
@@ -45,10 +47,11 @@ function getAndDisplayImage() {
             console.log(json.copyright)
             console.log(json.url)
             if (json.media_type == "image") {
-                display(json.url, json.explanation, json.title)
+                display(json.url, json.explanation, json.title, json.date 
+                    )
             } else {
                 // ToDo: Clear previous image?
-                document.getElementById("message").innerHTML = 'Not a photograph';
+                alert("Photograph not available for that date.  Please try again.")
             }
         })
     // .catch(() => { console.error("something went wrong") })
